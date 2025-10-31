@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Inventario de Productos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f6fa;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 90%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    }
+
+    th {
+      background-color: #ff914d;
+      color: white;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    tr:hover {
+      background-color: #f9f9f9;
+    }
+
+    button {
+      background-color: #ff914d;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+      font-size: 15px;
+    }
+
+    button:hover {
+      background-color: #ff7a29;
+    }
+
+    img {
+      width: 70px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Inventario de Productos</h1>
+  <button onclick="agregarProducto()">➕ Agregar Producto</button><br><br>
+
+  <table id="tablaInventario">
+    <tr>
+      <th>#</th>
+      <th>Imagen</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Cantidad</th>
+      <th>Precio Unitario</th>
+      <th>Total</th>
+    </tr>
+  </table>
+
+  <script>
+    let contador = 0;
+
+    function agregarProducto() {
+      contador++;
+
+      let imagenNum = prompt("Ingresa el número de imagen (1, 2, 3...)");
+      let nombre = prompt("Ingresa el nombre del producto:");
+      let descripcion = prompt("Ingresa una breve descripción del producto:");
+      let cantidad = parseInt(prompt("Ingresa la cantidad en existencia:"));
+      let precio = parseFloat(prompt("Ingresa el precio unitario:"));
+
+      let total = cantidad * precio;
+
+      // Mostrar imagen según número
+      let imagenHTML = "";
+      if (imagenNum === "1") {
+        imagenHTML = "<img src='1.jpg' alt='Producto 1'>";
+      } else if (imagenNum === "2") {
+        imagenHTML = "<img src='2.jpg' alt='Producto 2'>";
+      } else if (imagenNum === "3") {
+        imagenHTML = "<img src='3.jpg' alt='Producto 3'>";
+      } else {
+        imagenHTML = "<i>Sin imagen</i>";
+      }
+
+      let tabla = document.getElementById("tablaInventario");
+      let fila = `
+        <tr>
+          <td>${contador}</td>
+          <td>${imagenHTML}</td>
+          <td>${nombre}</td>
+          <td>${descripcion}</td>
+          <td>${cantidad}</td>
+          <td>$${precio.toFixed(2)}</td>
+          <td>$${total.toFixed(2)}</td>
+        </tr>
+      `;
+
+      tabla.innerHTML += fila;
+    }
+  </script>
+
+</body>
+</html>
