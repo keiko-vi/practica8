@@ -3,80 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <title>Inventario</title>
-  <style>
-    body {
-      font-family: 'Trebuchet MS', sans-serif;
-      background-color: #f4f9f9;
-      text-align: center;
-    }
-
-    form {
-      margin-bottom: 20px;
-    }
-
-    input, select, button {
-      padding: 6px;
-      margin: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    button {
-      background-color: #A7C7E7;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #3a9186;
-    }
-
-    table {
-      width: 95%;
-      margin: 0 auto;
-      border-collapse: collapse;
-      background-color: white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    th {
-      background-color: #BEE3F8;
-      color: black;
-      padding: 8px;
-    }
-
-    td {
-      padding: 8px;
-      border: 1px solid #ddd;
-    }
-
-    img {
-      width: 70px;
-      border-radius: 8px;
-    }
-  </style>
+  <link rel="stylesheet" href="colores.css">
 </head>
 <body>
 
+<!--- Función para mostrar texto con color, tamaño, alineación y tipo de letra --->
 <script>
-  // --- Función para mostrar texto con color, tamaño y alineación ---
-  function ponertetexto(cadena, color, tam, alineacion) {
-    document.write("<div align='" + alineacion + "'><font color='" + color + "' size='" + tam + "'>" + cadena + "</font></div>");
+  function ponertetexto(cadena, color, tam, alineacion, tipoLetra) {
+    document.write(
+      "<div align='" + alineacion + "'>" +
+      "<font color='" + color + "' size='" + tam + "' face='" + tipoLetra + "'>" +
+      cadena +
+      "</font></div>"
+    );
   }
 
-  // Mostrar el título usando la función
-  ponertetexto("Inventario", "#2b6777", "7", "center");
+  ponertetexto("Inventario", "#2b6777", "7", "center", "Comic Sans MS");
+
 </script>
 
 <script>
-  // --- Función para mostrar texto con color, tamaño y alineación ---
-  function ponertetexto(cadena, color, tam, alineacion) {
-    document.write("<div align='" + alineacion + "'><font color='" + color + "' size='" + tam + "'>" + cadena + "</font></div>");
+  function ponertetexto(cadena, color, tam, alineacion, tipoLetra) {
+    document.write(
+      "<div align='" + alineacion + "'>" +
+      "<font color='" + color + "' size='" + tam + "' face='" + tipoLetra + "'>" +
+      cadena +
+      "</font></div>"
+    );
   }
 
-  ponertetexto("Programación web", "#2b5775", "5", "left");
+  ponertetexto("Programacion web", "#2b6777", "6", "left", "Broadway");
 </script>
+
+</script>
+
+<script>
+  function ponertetexto(cadena, color, tam, alineacion, tipoLetra) {
+    document.write(
+      "<div align='" + alineacion + "'>" +
+      "<font color='" + color + "' size='" + tam + "' face='" + tipoLetra + "'>" +
+      cadena +
+      "</font></div>"
+    );
+  }
+
+  ponertetexto("Mendoza Ramírez Vianey", "#2b6777", "5", "right", "Verdana"); 
+</script><br>
 
 <form id="formInventario">
   Código: <input type="text" id="codigo" required>
@@ -133,7 +105,7 @@
 
     let subtotal = precio * cantidad;
 
-    // Si el país es extranjero, aplica IVA; si es México, no.
+    // Si el país es extranjero, aplica IVA, cuando sea México, no.
     let iva = 0;
     if (pais !== "México") {
       iva = subtotal * 0.16;
@@ -141,14 +113,14 @@
 
     let total = subtotal + iva;
 
-    // Mostrar imagen según el código
+    // Aquí se muestran las imagenes según el código
     let imagenHTML = "";
     if (codigo === "1") {
       imagenHTML = "<img src='1.jpg'>";
     } else if (codigo === "2") {
       imagenHTML = "<img src='2.jpg'>";
     } else if (codigo === "3") {
-      imagenHTML = "<img src='3.jpg'>";
+      imagenHTML = "<img src='3.png'>";
     } else {
       imagenHTML = "<i>Sin imagen</i>";
     }
